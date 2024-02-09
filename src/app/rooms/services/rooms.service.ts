@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service';
 import { AppConfig } from '../../AppConfig/appconfig.interface';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { RoomList } from '../rooms';
 import { shareReplay } from 'rxjs';
 
@@ -26,8 +26,8 @@ export class RoomsService {
   );
 
   addRoom(room: RoomList) {
-    const headers = new HttpHeaders({ 'token': '123456' });
-    return this.httpClient.post<RoomList[]>('/api/rooms', room, { headers: headers });
+    // const headers = new HttpHeaders({ 'token': '123456' });
+    return this.httpClient.post<RoomList[]>('/api/rooms', room);
   }
 
   editRoom(room: RoomList) {
