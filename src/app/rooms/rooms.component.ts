@@ -17,7 +17,7 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
 import { HttpEventType } from '@angular/common/http';
-import { catchError, of, Subject } from 'rxjs';
+import { catchError, map, of, Subject } from 'rxjs';
 
 @Component({
   selector: 'hinv-rooms',
@@ -51,6 +51,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   title: string = '';
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
+
   error$: Subject<string> = new Subject<string>();
   getError$ = this.error$.asObservable();
 
@@ -59,6 +60,11 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     this.error$.next(err.message);
     return of([]);
   }));
+
+  roomsCount$ = this.roomService.getRooms$
+  .pipe(
+    map(rooms => rooms.length),
+  );
 
   constructor(@SkipSelf() private roomService: RoomsService) {
   }
