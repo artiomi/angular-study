@@ -15,7 +15,6 @@ import {
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from './services/rooms.service';
-import { Observable } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 
 @Component({
@@ -69,7 +68,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.roomService.getRoomsList()
+    this.roomService.getRooms$
     .subscribe(room => this.roomList = room);
     this.loadPhotos();
   }

@@ -3,12 +3,12 @@ import { APP_SERVICE_CONFIG } from '../../AppConfig/appconfig.service';
 import { AppConfig } from '../../AppConfig/appconfig.interface';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { RoomList } from '../rooms';
+import { shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoomsService {
-
   constructor(
     @Inject(APP_SERVICE_CONFIG) serviceConfig: AppConfig,
     private httpClient: HttpClient,
@@ -19,6 +19,11 @@ export class RoomsService {
   getRoomsList() {
     return this.httpClient.get<RoomList[]>('/api/rooms');
   }
+
+  getRooms$ = this.httpClient.get<RoomList[]>('/api/rooms')
+  .pipe(
+    shareReplay(1),
+  );
 
   addRoom(room: RoomList) {
     return this.httpClient.post<RoomList[]>('/api/rooms', room);
