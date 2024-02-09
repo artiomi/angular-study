@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, DoCheck, OnInit, SkipSelf, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import {
+  AsyncPipe,
   CurrencyPipe,
   DatePipe,
   DecimalPipe,
@@ -33,6 +34,7 @@ import { HttpEventType } from '@angular/common/http';
     DecimalPipe,
     RoomsListComponent,
     HeaderComponent,
+    AsyncPipe,
   ],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss',
@@ -48,6 +50,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   title: string = '';
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
+  rooms$ = this.roomService.getRooms$;
 
   constructor(@SkipSelf() private roomService: RoomsService) {
   }
@@ -68,8 +71,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.roomService.getRooms$
-    .subscribe(room => this.roomList = room);
+    // subscription!: Subscription;
+    // this.subscription = this.roomService.getRooms$
+    // .subscribe(room => this.roomList = room);
     this.loadPhotos();
   }
 
@@ -108,7 +112,6 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     console.log('room selected: ', room);
     this.selectedRoom = room;
   }
-
 
   addRoom() {
     const room: RoomList =

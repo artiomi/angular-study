@@ -6,10 +6,10 @@ import {
   OnChanges,
   OnDestroy,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
-import {CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgForOf, UpperCasePipe} from "@angular/common";
-import {RoomList} from "../rooms";
+import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgForOf, UpperCasePipe } from '@angular/common';
+import { RoomList } from '../rooms';
 
 @Component({
   selector: 'hinv-rooms-list',
@@ -21,29 +21,29 @@ import {RoomList} from "../rooms";
     LowerCasePipe,
     NgForOf,
     UpperCasePipe,
-    NgClass
+    NgClass,
   ],
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsListComponent implements OnChanges, OnDestroy {
-  @Input() rooms: RoomList[] = []
-  @Input() title: string = ''
-  @Output() selectedRoom = new EventEmitter<RoomList>()
+  @Input() rooms: RoomList[] | null = [];
+  @Input() title: string = '';
+  @Output() selectedRoom = new EventEmitter<RoomList>();
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes:", changes)
+    console.log('changes:', changes);
     if (changes['title']) {
-      this.title = changes['title'].currentValue.toUpperCase()
+      this.title = changes['title'].currentValue.toUpperCase();
     }
   }
 
   selectRoom(room: RoomList) {
-    this.selectedRoom.emit(room)
+    this.selectedRoom.emit(room);
   }
 
   ngOnDestroy(): void {
-    console.log("OnDestroy called")
+    console.log('OnDestroy called');
   }
 }
