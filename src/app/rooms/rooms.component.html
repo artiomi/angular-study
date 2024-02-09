@@ -30,4 +30,8 @@
 
 <h1>{{ totalBytes }} loaded</h1>
 
+<div *ngIf="getError$ | async as errorMessage">
+  <h3>failure reason: {{ errorMessage }}</h3>
+</div>
+
 
