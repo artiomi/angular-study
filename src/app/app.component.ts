@@ -4,11 +4,12 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { localStorageToken } from './localstorage.token';
+import { AppNavComponent } from './app-nav/app-nav.component';
 
 @Component({
   selector: 'hinv-root',
   standalone: true,
-  imports: [RouterOutlet, RoomsComponent, ContainerComponent, EmployeeComponent, RouterLink],
+  imports: [RouterOutlet, RoomsComponent, ContainerComponent, EmployeeComponent, RouterLink, AppNavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
