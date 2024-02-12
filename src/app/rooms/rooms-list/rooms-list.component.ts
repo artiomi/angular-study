@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgForOf, UpperCasePipe } from '@angular/common';
 import { RoomList } from '../rooms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'hinv-rooms-list',
@@ -22,6 +23,7 @@ import { RoomList } from '../rooms';
     NgForOf,
     UpperCasePipe,
     NgClass,
+    RouterLink,
   ],
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.scss',
