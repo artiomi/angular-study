@@ -7,6 +7,7 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { requestInterceptor } from './request.interceptor';
 import { InitService } from './init.service';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FormsModule } from '@angular/forms';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -15,7 +16,7 @@ function initFactory(initService: InitService) {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule),
+    importProvidersFrom(HttpClientModule, FormsModule),
     provideHttpClient(
       withInterceptors([requestInterceptor]),
     ),
