@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -8,7 +8,7 @@ import { localStorageToken } from './localstorage.token';
 @Component({
   selector: 'hinv-root',
   standalone: true,
-  imports: [RouterOutlet, RoomsComponent, ContainerComponent, EmployeeComponent],
+  imports: [RouterOutlet, RoomsComponent, ContainerComponent, EmployeeComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

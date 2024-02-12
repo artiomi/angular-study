@@ -1,10 +1,13 @@
-<h1>Hello Angular!!</h1>
+<!--<h1>Hello Angular!!</h1>-->
 <!--<hinv-rooms></hinv-rooms>-->
-<hinv-container>
-  <hinv-rooms></hinv-rooms>
-  <hinv-employee></hinv-employee>
-  <h1> This is from ng-content</h1>
-</hinv-container>
+<!--<hinv-container>-->
+<!--  <hinv-rooms></hinv-rooms>-->
+<!--  <hinv-employee></hinv-employee>-->
+<!--  <h1> This is from ng-content</h1>-->
+<!--</hinv-container>-->
 <!--<div>-->
 <!--  <ng-template #user></ng-template>-->
 <!--</div>-->
+<a [routerLink]="'rooms'">Rooms</a><p></p>
+<a [routerLink]="'employee'">Employee</a>
+<router-outlet></router-outlet>
