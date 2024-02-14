@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RoomList } from '../rooms';
 import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgIf } from '@angular/common';
 import { RoomsService } from '../services/rooms.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { RoomsService } from '../services/rooms.service';
   imports: [
     FormsModule,
     JsonPipe,
+    NgIf,
   ],
   templateUrl: './rooms-add.component.html',
   styleUrl: './rooms-add.component.scss',
@@ -26,6 +27,7 @@ export class RoomsAddComponent {
     checkoutTime: new Date(),
     rating: 0,
   };
+  successMessage: string = '';
 
   constructor(private roomsService: RoomsService) {
 
@@ -34,6 +36,8 @@ export class RoomsAddComponent {
 
   addRoom() {
     console.log('My room:', this.room);
-    this.roomsService.addRoom(this.room).subscribe(result => console.log('result:', result));
+    this.roomsService
+    .addRoom(this.room)
+    .subscribe(result => this.successMessage = 'New room was added');
   }
 }
